@@ -1,17 +1,15 @@
-var random = require("./index")
-random = displayQ();
-const mysql = require("mysql")
+const util = require("util");
+const mysql = require("mysql");
+
 var connection = mysql.createConnection({
     host: "localhost",
     post: 3306,
     user: "root",
-    password: "",
+    password: "password",
     database: "ems_db"
 })
-connection.connect(function(error){
-    if (error) {
-        return error;
-    } else {
-        random;
-    }
-})
+connection.connect();
+
+connection.query = util.promisify(connection.query);
+
+module.exports = connection;

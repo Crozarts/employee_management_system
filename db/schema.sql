@@ -1,14 +1,33 @@
-DROP DATABASE IF EXISTS ems_db
+DROP DATABASE IF EXISTS ems_db;
 CREATE DATABASE ems_db;
+
 USE ems_db;
 
-​
--- Create the department table
-CREATE TABLE IF NOT EXISTS spartment (
-    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    name varchar(100) NOT NULL 
+CREATE TABLE department (
+    id INT NOT NULL AUTO_INCREMENT,
+    department_name VARCHAR(30) NOT NULL,
+    PRIMARY KEY (id)
 );
 
--- create a role table
+CREATE TABLE role (
+    id INT NOT NULL AUTO_INCREMENT,
+    title VARCHAR(30) NOT NULL,
+    salary DECIMAL(10, 4) NULL,
+    department_id INT NULL,
+    PRIMARY KEY (id),
+    -- MAKE AN CONSTRAINT 'ON DELETEN CASCADE' (WITHOUT QUOTES) ON THIS FOREIGN KEY
+    FOREIGN KEY (department_id) REFERENCES department (id) ON DELETE CASCADE
+);
 
--- create a employee table w/ first last name id role id and manager id
+CREATE TABLE employee (
+    id INT NOT NULL AUTO_INCREMENT,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    role_id INT NULL,
+    manager_id INT NULL,
+    PRIMARY KEY (id),
+    -- MAKE role_id AS FOREIGN KEY REFERENCING role TABLE AND MAKE CONSTRAINT ON DELETE CASCADE ON THIS FOREIGN KEY
+    FOREIGN KEY (role_id) REFERENCES role (id) ON DELETE CASCADE,
+    -- MAKE manager_id AS FOREIGN KEY REFERENCING employee TABLE ITSELF AND MAKE CONSTRAINT ON DELETE SET NULL ON THIS FOREIGN KEY
+    FOREIGN KEY (manager_id) REFERENCES employee (id) ON DELETE CASCADE
+);
