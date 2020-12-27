@@ -53,10 +53,10 @@ So that I can organize and plan my business
 
 
 # Screengrab
-![EMS](assets/img/quiz.gif)
+![EMS](./assets/images/ems_readMe.png)
 
 # Links
 
-[Deployed Link](https://crozarts.github.io/QuizHomework/)
+[Screencastify link](https://drive.google.com/file/d/1laMG1NLp37kzny1WN9ffl9EohTwCkGdF/view)
 
-[GitHub Link](https://github.com/Crozarts/QuizHomework/)   
+[GitHub Link](https://github.com/Crozarts/employee_management_system)   
